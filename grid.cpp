@@ -32,13 +32,13 @@ void Grid::contBound(void(*a)(float, Grid&), void(*b)(float, Grid&), void(*c)(fl
 	for(int i = 0; i < this->N - 1; i++) 
 	{
 		a(this->x[i], *this);
-		this->u[0][i] = this->dummy;
-		b(this->x[i], *this);
-		this->u[this->N - 1][i] = this->dummy;
-		c(this->y[i], *this);
-		this->u[i][0] = this->dummy;
-		d(this->y[i], *this);
 		this->u[i][this->N - 1] = this->dummy;
+		b(this->x[i], *this);
+		this->u[i][0] = this->dummy;
+		c(this->y[i], *this);
+		this->u[0][i] = this->dummy;
+		d(this->y[i], *this);
+		this->u[this->N - 1][i][this->N - 1] = this->dummy;
 	}
 }
 
